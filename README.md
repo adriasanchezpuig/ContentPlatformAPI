@@ -16,28 +16,11 @@ $ pip install djangorestframework
 
 ![Diagrama sense títol drawio](https://user-images.githubusercontent.com/120499098/207666548-d0ea31bb-09ac-4c59-8feb-c04450343a45.png)
 
-## Usage
-
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+- Create a management command to efficiently calculate the ratings of every
+channel and export them in a csv file sorted by rating (i.e. the highest rated
+channels on top). The csv contains two columns: <channel title>, <average
+rating>
+To run the management command:
+```bash
+  $ python manag.py compute_ratings
 ```
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
