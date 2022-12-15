@@ -1,10 +1,8 @@
 # IMMFLY backend test
 
-## Requirements:
-
 - Create a Django project to define an API.
-The project was created following the steps on this blog: 
-https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c
+< br /> The project was created following the steps on this blog: 
+< br /> https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c
 
 ```bash
 $ pip install virtualenv
@@ -20,7 +18,12 @@ $ pip install djangorestframework
 channel and export them in a csv file sorted by rating (i.e. the highest rated
 channels on top). The csv contains two columns: <channel title>, <average
 rating>
-To run the management command:
+<br /> To run the management command:
 ```bash
   $ python manag.py compute_ratings
 ```
+
+- Create endpoints to retrieve the channels, their subchannels and its contents.
+< br /> Endpoints were created following the steps on this blog:
+< br /> https://dev.to/jenhsuan/day-23-of-100daysofcode-create-endpoints-with-query-string-on-django-rest-framework-d5o
+
