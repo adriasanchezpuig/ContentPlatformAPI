@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 class Channel(models.Model):
-    id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=60)
     language = models.CharField(max_length=60)
     picture = models.BinaryField()
@@ -13,7 +12,6 @@ class Channel(models.Model):
         return self.title
 
 class Content(models.Model):
-    id = models.BigAutoField(primary_key=True)
     file = models.BinaryField()
     title = models.CharField(max_length=60)
     desc = models.CharField(max_length=60)

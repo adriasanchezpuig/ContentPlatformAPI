@@ -22,4 +22,4 @@ class Command(BaseCommand):
             writer.writerow(['Channel title','Rating'])
             for channel in sorted_ratings:
                 f.write("%s,%s\n"%(channel[0],channel[1]))
-        pass
+        return sorted_ratings
