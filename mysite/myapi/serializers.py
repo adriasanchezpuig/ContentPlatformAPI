@@ -8,8 +8,12 @@ class ContentSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('title', 'desc', 'author', 'genere', 'rating')
 
 class ChannelSerializer(serializers.HyperlinkedModelSerializer):
-    contents = ContentSerializer(many = True)
+    class Meta:
+        model = Channel
+        fields = ('title', 'language')
 
+class CompletePlatformSerializer(serializers.HyperlinkedModelSerializer):
+    contents = ContentSerializer(many = True)
     class Meta:
         model = Channel
         fields = ('title', 'language', 'contents')
