@@ -10,16 +10,28 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         ratings = {}
-        for channel in Channel.objects.all():
-            ratings.setdefault(channel.title, [])
-        for content in Content.objects.all():
-            ratings[content.cahnnel.title].append(content.rating)
-        for channel in ratings:
-            ratings[channel] = mean(ratings[channel])
-        sorted_ratings = sorted(ratings.items(), key=lambda x:x[1], reverse=True)
-        with open('ratings.csv', 'w') as f:
-            writer = csv.writer(f)
-            writer.writerow(['Channel title','Rating'])
-            for channel in sorted_ratings:
-                f.write("%s,%s\n"%(channel[0],channel[1]))
+        for channel in Channel.objects.all(): ratings.setdefault(channel.title, [])
+        for content in Content.objects.all(): ratings[content.cahnnel.title].append(content.rating)
+        mean_ratings = self.calculate_channel_means(ratings)
+        sorted_ratings = self.order_ratings(mean_ratings)
+        self.export_csv(sorted_ratings)
         return sorted_ratings
+    
+    def calculate_channel_means(self, ratings):
+        means = {}
+        for channel in ratings:
+            means[channel] = mean(ratings[channel])
+        return means
+    
+    def order_ratings(self, ratings):
+        sorted_ratings = sorted(ratings.items(),
+            key=lambda x:x[1],
+            reverse=True
+        )
+        return sorted_ratings
+
+    def export_csv(self, sorted_ratings):
+        with open('ratings.csv', 'w') as f:
+            write = csv.writer(f)
+            write.writerow(["Channel", "Rating"])
+            write.writerows(sorted_ratings)
