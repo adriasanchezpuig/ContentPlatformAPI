@@ -27,3 +27,11 @@ channels on top). The csv contains two columns: channel title, average rating.**
 <br/> Endpoints were created following the steps on this blog:
 <br/> https://dev.to/jenhsuan/day-23-of-100daysofcode-create-endpoints-with-query-string-on-django-rest-framework-d5o
 
+**- Add unit tests to test the channel rating algorithm.**<br/>
+Added unit tests for two methods inside the management command (calculate_channel_means and order_ratings). 
+<br/> To execute them run the command:
+```bash
+  $ python manag.py test
+```
+The unit tests were created following the steps on this blog: 
+<br/> https://adamj.eu/tech/2020/09/07/how-to-unit-test-a-django-management-command/
