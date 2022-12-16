@@ -1,15 +1,5 @@
 # IMMFLY backend test
 
-**- Create a Django project to define an API.**<br/>
-<br/> The project was created following the steps on this blog: 
-<br/> https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c
-
-```bash
-$ pip install virtualenv
-$ pip install django
-$ pip install djangorestframework
-```
-
 **- Define models to represent the structure explained above.**<br/>
 
 ![Diagrama sense títol drawio](https://user-images.githubusercontent.com/120499098/207666548-d0ea31bb-09ac-4c59-8feb-c04450343a45.png)
@@ -20,12 +10,14 @@ channels on top). The csv contains two columns: channel title, average rating.**
 <br/> To run the management command:
   
 ```bash
-  $ python manag.py compute_ratings
+  $ python manage.py compute_ratings
 ```
   
 **- Create endpoints to retrieve the channels, their subchannels and its contents.**<br/>
-<br/> Endpoints were created following the steps on this blog:
-<br/> https://dev.to/jenhsuan/day-23-of-100daysofcode-create-endpoints-with-query-string-on-django-rest-framework-d5o
+<br/> There are enpoints created to:
+<br/> - http://127.0.0.1/platform -> returns all the channels, subchannels and contents of the platform.
+<br/> - http://127.0.0.1/channels/parent_channel=id -> returns the subchannels of the parent_channel, if no arguments are specified it returns all the channels. 
+<br/> - http://127.0.0.1/contents/parent_channel=id -> returns the contents of the parent_channel, if no arguments are specified it returns all the contents.
 
 **- Add unit tests to test the channel rating algorithm.**<br/>
 Added unit tests for two methods inside the management command (calculate_channel_means and order_ratings). 
@@ -33,5 +25,12 @@ Added unit tests for two methods inside the management command (calculate_channe
 ```bash
   $ python manag.py test
 ```
-The unit tests were created following the steps on this blog: 
-<br/> https://adamj.eu/tech/2020/09/07/how-to-unit-test-a-django-management-command/
+**- Adding Groups to the channels. Considering that each channel can belong to
+multiple groups.
+○ Allow filtering by group on Channels API.
+Note: Take into account that any channel’s groups set should be included in its
+parent’s group set**<br/>
+The model for Groups was created, having the channels Model as a field with ManyToMany relation. Also an endpoint was created:
+<br/> - http://127.0.0.1/groups/name=name -> returns the channels of the group, if no arguments are specified it returns all the groups.
+The part of editting the Group Model adding a channel to the group of a subchannel was not developed.
+
