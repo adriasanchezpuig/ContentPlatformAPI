@@ -15,7 +15,7 @@ class Command(BaseCommand):
         mean_ratings = self.calculate_channel_means(ratings)
         sorted_ratings = self.order_ratings(mean_ratings)
         self.export_csv(sorted_ratings)
-        return sorted_ratings
+        return str(sorted_ratings)
     
     def calculate_channel_means(self, ratings):
         means = {}
