@@ -9,9 +9,9 @@ class ChannelViewSet(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = Channel.objects.all()
-        title = self.request.query_params.get('title', None)
-        if title is not None:
-            queryset = queryset.filter(title=title)
+        fk = self.request.query_params.get('parent_channel', None)
+        if fk is not None:
+            queryset = queryset.filter(parent_channel=fk)
         return queryset
 
 class ContentViewSet(generics.ListAPIView):

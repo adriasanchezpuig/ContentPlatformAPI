@@ -10,8 +10,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         ratings = {}
-        for channel in Channel.objects.all(): ratings.setdefault(channel.title, [])
-        for content in Content.objects.all(): ratings[content.cahnnel.title].append(content.rating)
+        for content in Content.objects.all():
+            ratings.setdefault(content.parent_channel.title, []).append(content.rating)
+        for channel in Channel.objects.all():
+            if channel.parent_channel:
+                ratings.setdefault(channel.parent_channel.title, [])
+                for rating in ratings[channel.title]: ratings[channel.parent_channel.title].append(rating)
         mean_ratings = self.calculate_channel_means(ratings)
         sorted_ratings = self.order_ratings(mean_ratings)
         self.export_csv(sorted_ratings)
@@ -20,7 +24,7 @@ class Command(BaseCommand):
     def calculate_channel_means(self, ratings):
         means = {}
         for channel in ratings:
-            means[channel] = mean(ratings[channel])
+            means[channel] = round(mean(ratings[channel]),2)
         return means
     
     def order_ratings(self, ratings):
