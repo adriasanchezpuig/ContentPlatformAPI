@@ -5,8 +5,7 @@ class Channel(models.Model):
     title = models.CharField(max_length=60)
     language = models.CharField(max_length=60)
     picture = models.BinaryField()
-    #cahnnel = models.ForeignKey(self, on_delete=models.CASCADE)
-
+    parent_channel = models.ForeignKey('self', related_name='subchannels', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -18,7 +17,7 @@ class Content(models.Model):
     author = models.CharField(max_length=60)
     genere = models.CharField(max_length=60)
     rating = models.IntegerField()
-    cahnnel = models.ForeignKey(Channel, related_name='contents', on_delete=models.CASCADE)
+    parent_channel = models.ForeignKey(Channel, related_name='contents', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

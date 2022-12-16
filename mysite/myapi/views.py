@@ -4,6 +4,16 @@ from rest_framework.decorators import api_view
 from .serializers import *
 from .models import Content, Channel
 
+class PlatformViewSet(generics.ListAPIView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = CompletePlatformSerializer
+    http_method_names = ['get']
+    
+    def get_queryset(self):
+        queryset = Channel.objects.all()
+        return queryset
+    
+    
 class ChannelViewSet(generics.ListAPIView):
     permission_classes = (permissions.AllowAny,)
     serializer_class = ChannelSerializer
@@ -23,9 +33,9 @@ class ContentViewSet(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = Content.objects.all()
-        pk = self.request.query_params.get('id', None)
-        if pk is not None:
-            queryset = queryset.filter(id=pk)
+        fk = self.request.query_params.get('parent_channel', None)
+        if fk is not None:
+            queryset = queryset.filter(parent_channel=fk)
         return queryset
 
 

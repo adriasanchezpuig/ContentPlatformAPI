@@ -14,6 +14,8 @@ class ChannelSerializer(serializers.HyperlinkedModelSerializer):
 
 class CompletePlatformSerializer(serializers.HyperlinkedModelSerializer):
     contents = ContentSerializer(many = True)
+    subchannels = ChannelSerializer(many = True)
+
     class Meta:
         model = Channel
-        fields = ('title', 'language', 'contents')
+        fields = ('title', 'language', 'subchannels', 'contents')

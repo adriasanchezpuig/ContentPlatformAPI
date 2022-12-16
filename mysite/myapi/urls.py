@@ -11,4 +11,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('contents/', views.ContentViewSet.as_view(), name="contents"),
     path('channels/', views.ChannelViewSet.as_view(), name="channels"),
+    path('platform/', views.PlatformViewSet.as_view(), name="platform"),
 ]
