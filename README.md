@@ -2,7 +2,7 @@
 
 **- Define models to represent the structure explained above.**<br/>
 
-![Diagrama sense títol drawio](https://user-images.githubusercontent.com/120499098/207666548-d0ea31bb-09ac-4c59-8feb-c04450343a45.png)
+<img width="610" alt="image" src="https://user-images.githubusercontent.com/120499098/208117958-33157314-46a3-41bb-80b3-0405f08b504e.png">
 
 **- Create a management command to efficiently calculate the ratings of every
 channel and export them in a csv file sorted by rating (i.e. the highest rated
