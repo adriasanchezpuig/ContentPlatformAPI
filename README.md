@@ -26,11 +26,10 @@ Added unit tests for two methods inside the management command (calculate_channe
   $ python manag.py test
 ```
 **- Adding Groups to the channels. Considering that each channel can belong to
-multiple groups.
-○ Allow filtering by group on Channels API.
+multiple groups. Allow filtering by group on Channels API.
 Note: Take into account that any channel’s groups set should be included in its
 parent’s group set**<br/>
 The model for Groups was created, having the channels Model as a field with ManyToMany relation. Also an endpoint was created:
-<br/> - http://127.0.0.1/groups/name=name -> returns the channels of the group, if no arguments are specified it returns all the groups.
+<br/> - http://127.0.0.1/groups/name=name -> returns the channels of the group, if no arguments are specified it returns all the groups.<br/>
 The part of editting the Group Model adding a channel to the group of a subchannel was not developed.
 
