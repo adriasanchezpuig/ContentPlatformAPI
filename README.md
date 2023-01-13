@@ -24,7 +24,7 @@ channels on top). The csv contains two columns: channel title, average rating.**
 Added unit tests for two methods inside the management command (calculate_channel_means and order_ratings). 
 <br/> To execute them run the command:
 ```bash
-  $ python manag.py test
+  $ python manage.py test
 ```
 **- Adding Groups to the channels. Considering that each channel can belong to
 multiple groups. Allow filtering by group on Channels API.
