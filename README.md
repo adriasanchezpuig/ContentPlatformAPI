@@ -1,4 +1,5 @@
-# IMMFLY backend test
+# Python back-end project
+## Content Platform API using Django
 
 **- Define models to represent the structure explained above.**<br/>
 
